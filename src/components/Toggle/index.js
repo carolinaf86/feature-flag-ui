@@ -22,7 +22,9 @@ const ToggleRow = styled.div`
 
 const Toggle = ({toggle, value, onChange, type }) => {
     const handleChildChange = (name, checked) => {
-        onChange(toggle.name, {...value, [name]: checked});
+        // If no subToggles are checked, set the parent value to true, otherwise update child key value
+        const numSubTogglesChecked = Object.values(value).filter(v => !!v).length;
+        onChange(toggle.name, !checked && numSubTogglesChecked === 1 ? true : {...value, [name]: checked});
     };
     return (
         <Container type={type}>
