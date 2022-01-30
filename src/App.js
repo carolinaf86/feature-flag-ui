@@ -7,7 +7,7 @@ import initialData from './initialData.json';
 
 const Container = styled.div`
     margin: auto;
-    width: 500px;
+    max-width: 900px;
 `;
 
 function App() {
