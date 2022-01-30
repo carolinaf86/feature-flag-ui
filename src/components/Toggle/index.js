@@ -5,32 +5,45 @@ import ReactToggle from 'react-toggle';
 import 'react-toggle/style.css';
 
 const Container = styled.div`
+   
+`;
+
+const ToggleRow = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 20px;
 `;
 
-const Toggle = ({ label, checked, onChange, additionalInput }) => {
+const Toggle = ({ toggle, value, onChange, additionalInput }) => {
+    const handleChildChange = (name, checked) => {
+        onChange(toggle.name, { ...value, [name]: checked });
+    };
     return (
         <Container>
-            <div>{label}</div>
-            {additionalInput && (additionalInput)}
-            <label>
-                <ReactToggle checked={checked} onChange={e => onChange(e.target.checked)}/>
-            </label>
+            <ToggleRow>
+                <div>{toggle.label}</div>
+                {additionalInput && (additionalInput)}
+                <label>
+                    <ReactToggle name={toggle.name} checked={!!value} onChange={e => onChange(toggle.name, e.target.checked)}/>
+                </label>
+            </ToggleRow>
+            {value && toggle.subToggles?.map((subToggle, key) => (
+                <Toggle key={key} toggle={subToggle} onChange={handleChildChange} value={value?.[subToggle.name]} />
+            ))}
         </Container>
     );
 };
 
 Toggle.propTypes = {
-    label: PropTypes.string.isRequired,
-    checked: PropTypes.bool.isRequired,
+    toggle: PropTypes.object.isRequired,
+    value: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     onChange: PropTypes.func.isRequired,
     additionalInput: PropTypes.element
 };
 
 Toggle.defaultProps = {
-    additionalInput: null
+    additionalInput: null,
+    value: false
 };
 
 export default Toggle;

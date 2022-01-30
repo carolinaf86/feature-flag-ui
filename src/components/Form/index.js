@@ -13,12 +13,12 @@ const FieldContainer = styled.div`
     
 `;
 
-const Form = ({ schema, initialData }) => {
+const Form = ({schema, initialData}) => {
 
     const [values, setValues] = useState(initialData);
 
     const handleChange = (fieldName, value) => {
-        setValues({ ...values, [fieldName]: value });
+        setValues({...values, [fieldName]: value});
     }
 
     useEffect(() => {
@@ -26,23 +26,26 @@ const Form = ({ schema, initialData }) => {
     }, [values]);
 
     return (
-        <Container>
-            <form>
+        <form>
+            <Container>
                 {schema.map((field, idx) => (
                     <FieldContainer key={idx}>
                         {field.type === 'toggle' && (
-                            <Toggle label={field.label}
-                                    onChange={(checked) => handleChange(field.name, checked)}
-                                    checked={!!values[field.name]}/>
+                            <Toggle toggle={field}
+                                    onChange={handleChange}
+                                    value={!!values[field.name]}/>
                         )}
                         {field.type === 'toggleGroup' && (
-                            <ToggleGroup toggles={field.children} onChange={handleChange} values={values} title={field.title} />
+                            <ToggleGroup toggles={field.toggles}
+                                         onChange={handleChange}
+                                         values={values}
+                                         title={field.title}/>
                         )}
                         {field.type === 'title' && (<h2>{field.label}</h2>)}
                     </FieldContainer>
                 ))}
-            </form>
-        </Container>
+            </Container>
+        </form>
     )
 };
 
