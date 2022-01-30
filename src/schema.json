@@ -1,5 +1,9 @@
 [
   {
+    "type": "title",
+    "label": "General"
+  },
+  {
     "name": "caseManagement",
     "label": "Case Management",
     "type": "toggle"
@@ -30,6 +34,38 @@
     "type": "toggle",
     "children": [
 
+    ]
+  },
+  {
+    "type": "toggleGroup",
+    "title": "Settings",
+    "children": [
+      {
+        "name": "auditLog",
+        "label": "Audit Log",
+        "type": "toggle"
+      },
+      {
+        "name": "users",
+        "label": "Users",
+        "type": "toggle"
+      }
+    ]
+  },
+  {
+    "type": "toggleGroup",
+    "title": "Settings 2",
+    "children": [
+      {
+        "name": "auditLog1",
+        "label": "Audit Log",
+        "type": "toggle"
+      },
+      {
+        "name": "users1",
+        "label": "Users",
+        "type": "toggle"
+      }
     ]
   }
 ]

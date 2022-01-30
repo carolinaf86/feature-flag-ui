@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Toggle from '../Toggle';
+import ToggleGroup from '../ToggleGroup';
 
 const Container = styled.div`
     display: flex;
@@ -34,6 +35,10 @@ const Form = ({ schema, initialData }) => {
                                     onChange={(checked) => handleChange(field.name, checked)}
                                     checked={!!values[field.name]}/>
                         )}
+                        {field.type === 'toggleGroup' && (
+                            <ToggleGroup toggles={field.children} onChange={handleChange} values={values} title={field.title} />
+                        )}
+                        {field.type === 'title' && (<h2>{field.label}</h2>)}
                     </FieldContainer>
                 ))}
             </form>

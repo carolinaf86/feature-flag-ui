@@ -1,4 +1,5 @@
 {
   "mapTimeline": true,
-  "trafficCameras": true
+  "trafficCameras": true,
+  "users": true
 }
