@@ -1,0 +1,35 @@
+[
+  {
+    "name": "caseManagement",
+    "label": "Case Management",
+    "type": "toggle"
+  },
+  {
+    "name": "mapTimeline",
+    "label": "Map Timeline",
+    "type": "toggle"
+  },
+  {
+    "name": "viewsBriefings",
+    "label": "Views and Briefings",
+    "type": "toggle"
+  },
+  {
+    "name": "notifications",
+    "label": "Notifications",
+    "type": "toggle"
+  },
+  {
+    "name": "massCommunications",
+    "label": "Mass Communications",
+    "type": "toggle"
+  },
+  {
+    "name": "trafficCameras",
+    "label": "Traffic Cameras",
+    "type": "toggle",
+    "children": [
+
+    ]
+  }
+]
