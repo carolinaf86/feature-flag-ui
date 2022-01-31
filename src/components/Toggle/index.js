@@ -13,14 +13,14 @@ const Container = styled.div`
     `}
 `;
 
-const ToggleRow = styled.div`
+const ToggleRow = styled.label`
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: ${props => props.type === 'child' ? '10px 24px' : '20px'};  
 `;
 
-const Toggle = ({toggle, value, onChange, type }) => {
+const Toggle = ({toggle, value, onChange, type}) => {
     const handleChildChange = (name, checked) => {
         // If no subToggles are checked, set the parent value to true, otherwise update child key value
         const numSubTogglesChecked = Object.values(value).filter(v => !!v).length;
@@ -29,15 +29,15 @@ const Toggle = ({toggle, value, onChange, type }) => {
     return (
         <Container type={type}>
             <ToggleRow type={type}>
-                <div>{toggle.label}</div>
                 {/* TODO add optional dropdown/input */}
-                <label>
-                    <ReactToggle name={toggle.name} checked={!!value}
+                    {toggle.label}
+                    <ReactToggle name={toggle.name}
+                                 checked={!!value}
                                  onChange={e => onChange(toggle.name, e.target.checked)}/>
-                </label>
             </ToggleRow>
             {value && toggle.subToggles?.map((subToggle, key) => (
-                <Toggle key={key} toggle={subToggle} onChange={handleChildChange} value={value?.[subToggle.name]} type="child" />
+                <Toggle key={key} toggle={subToggle} onChange={handleChildChange} value={value?.[subToggle.name]}
+                        type="child"/>
             ))}
         </Container>
     );
