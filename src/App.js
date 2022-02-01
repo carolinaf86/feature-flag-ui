@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import './App.css';
 import Form from './components/Form';
 import schema from './schema.json';
 import initialData from './initialData.json';

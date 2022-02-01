@@ -51,7 +51,7 @@
   },
   {
     "type": "toggleGroup",
-    "title": "Settings 2",
+    "title": "Settings",
     "toggles": [
       {
         "name": "auditLog",
